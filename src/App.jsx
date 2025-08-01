@@ -9,11 +9,9 @@ import BlankLayout from "@/components/BlankLayout/BlankLayout";
 import Home from "@/pages/Home";
 import Favorites from "@/pages/Favorites";
 import AI from "@/pages/AI";
-import Orders from "@/pages/Orders";
+import Shop from "@/pages/Shop";
 import Profile from "@/pages/Profile";
 import Login from "@/pages/Login";
-
-import "./App.css";
 
 function App() {
   return (
@@ -26,7 +24,7 @@ function App() {
             <Route path="home" element={<Home />} />
             <Route path="favorites" element={<Favorites />} />
             <Route path="ai" element={<AI />} />
-            <Route path="orders" element={<Orders />} />
+            <Route path="shop" element={<Shop />} />
             <Route path="profile" element={<Profile />} />
           </Route>
 
