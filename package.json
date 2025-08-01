@@ -15,10 +15,12 @@
     "lib-flexible": "^0.3.2",
     "mitt": "^3.0.1",
     "mockjs": "^1.1.0",
+    "postcss-pxtorem": "^6.1.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-router-dom": "^7.7.1",
     "react-vant": "^3.3.5",
+    "vite-plugin-mock": "^3.0.2",
     "zustand": "^5.0.7"
   },
   "devDependencies": {
