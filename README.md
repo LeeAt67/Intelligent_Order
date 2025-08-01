@@ -17,9 +17,21 @@
   - useCallback useMemo ... 
 - LLM
 ## 项目架构
-
+- components
+- pages
+- stores
+- hooks
+- api
+- mock
+- utils
 ## 开发前的准备
 
+- 安装的包
+ react-router-dom zustand axios
+ react-vant(UI 组件库) lib-flexible（移动端适配）
+ mitt 发布/订阅模式
+ 开发期间的依赖
+ vite-plugin-mock jwt
 ## 项目亮点
 
 ## 项目难点
