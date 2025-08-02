@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Image, Cell, Button, ActionSheet } from "react-vant";
 import {
   SettingO,
@@ -10,10 +10,14 @@ import {
 } from "@react-vant/icons";
 import useTitle from "@/hooks/useTitle";
 import styles from "./index.module.css";
-import { generateAvatar } from "@/llm";
+import { generateAvatarImage } from "@/llm";
+import { showToast } from "@/utils/eventBus";
 
 const Profile = () => {
   useTitle("我的");
+
+  // 文件上传引用
+  const fileInputRef = useRef(null);
 
   const [userInfo, setUserInfo] = useState({
     username: "LeeAt",
@@ -41,11 +45,64 @@ const Profile = () => {
       type: 2,
     },
   ];
+
+  // 处理文件选择
+  const handleFileSelect = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      // 检查文件类型
+      if (!file.type.startsWith("image/")) {
+        showToast("请选择图片文件", "error");
+        return;
+      }
+
+      // 检查文件大小 (限制为5MB)
+      if (file.size > 5 * 1024 * 1024) {
+        showToast("图片大小不能超过5MB", "error");
+        return;
+      }
+
+      // 创建FileReader 预览图片
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const imageUrl = e.target.result;
+        setUserInfo({ ...userInfo, avatar: imageUrl });
+      };
+      reader.readAsDataURL(file);
+    }
+
+    // 重置input值，允许重复选择同一文件
+    event.target.value = "";
+  };
+
   const handleAction = async (e) => {
+    setShowActionSheet(false); // 先关闭ActionSheet
+
     if (e.type === 1) {
       // AI 生成头像
+      showToast("正在生成头像...", "warning", 0);
+      try {
+        const text = `
+        请根据以下信息生成一个动漫头像：
+        昵称: ${userInfo.username}，
+        个性签名: ${userInfo.slogan}`;
+        const result = await generateAvatarImage(text);
+
+       //  console.log(result); 
+
+        if (result.code === 0 && result.data?.imageUrl) {
+          setUserInfo({ ...userInfo, avatar: result.data.imageUrl });
+          showToast("头像生成成功", "success");
+        } else {
+          throw new Error(result.msg || "头像生成失败");
+        }
+      } catch (error) {
+        showToast("头像生成失败", "error");
+        console.error("AI头像生成失败:", error);
+      }
     } else if (e.type === 2) {
-      // 上传头像
+      // 上传头像 - 触发文件选择
+      fileInputRef.current?.click();
     }
   };
   const handleMenuClick = (item) => {
@@ -141,6 +198,15 @@ const Profile = () => {
         onCancel={() => setShowActionSheet(false)}
         onSelect={(e) => handleAction(e)}
       ></ActionSheet>
+
+      {/* 隐藏的文件上传input */}
+      <input
+        ref={fileInputRef}
+        type="file"
+        accept="image/*"
+        style={{ display: "none" }}
+        onChange={handleFileSelect}
+      />
 
       <div className={styles.logoutSection}>
         <Button
