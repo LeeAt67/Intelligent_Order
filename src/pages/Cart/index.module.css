@@ -1,0 +1,178 @@
+.cart {
+  min-height: 100vh;
+  background-color: #f5f5f5;
+  display: flex;
+  flex-direction: column;
+}
+
+.navbar {
+  background-color: #fff;
+  border-bottom: 1px solid #eee;
+}
+
+.content {
+  flex: 1;
+  padding: 32px;
+}
+
+.emptyCart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 500px;
+  gap: 40px;
+}
+
+.goShoppingBtn {
+  width: 200px;
+  height: 80px;
+  font-size: 28px;
+  border-radius: 40px;
+}
+
+.cartHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+  padding: 24px;
+  background-color: #fff;
+  border-radius: 16px;
+}
+
+.itemCount {
+  font-size: 28px;
+  color: #333;
+  font-weight: 500;
+}
+
+.clearBtn {
+  height: 60px;
+  padding: 0 24px;
+  font-size: 24px;
+}
+
+.cartList {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.cartItem {
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.itemContent {
+  display: flex;
+  padding: 24px;
+  gap: 24px;
+}
+
+.itemImage {
+  width: 150px;
+  height: 120px;
+  border-radius: 12px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.itemInfo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.itemName {
+  font-size: 28px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.itemDesc {
+  font-size: 22px;
+  color: #666;
+  line-height: 1.4;
+  margin-bottom: 16px;
+}
+
+.itemActions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.itemPrice {
+  font-size: 28px;
+  font-weight: 600;
+  color: #ff6b35;
+}
+
+.quantityControl {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.stepper {
+  --rv-stepper-input-width: 80px;
+  --rv-stepper-input-height: 60px;
+  --rv-stepper-input-font-size: 24px;
+  --rv-stepper-button-size: 60px;
+  --rv-stepper-button-round-theme-color: #ff6b35;
+}
+
+.removeBtn {
+  height: 60px;
+  padding: 0 20px;
+  font-size: 22px;
+}
+
+.cartFooter {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #fff;
+  padding: 32px;
+  border-top: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+}
+
+.totalInfo {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.totalLabel {
+  font-size: 28px;
+  color: #333;
+}
+
+.totalPrice {
+  font-size: 36px;
+  font-weight: 600;
+  color: #ff6b35;
+}
+
+.checkoutBtn {
+  width: 200px;
+  height: 80px;
+  font-size: 28px;
+  border-radius: 40px;
+  background-color: #ff6b35;
+}
+
+/* 为底部固定按钮预留空间 */
+.cartList {
+  padding-bottom: 180px;
+}
