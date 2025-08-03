@@ -11,7 +11,7 @@ import { getCategories, getDishesByCategory } from "@/api/menu";
 import styles from "./index.module.css";
 
 /**
- * 菜单页面 
+ * 菜单页面
  *
  * 功能特性：
  * - 分类导航：支持按菜品分类浏览
@@ -110,9 +110,8 @@ const Menu = () => {
     [addItem]
   );
 
-  // 处理菜品卡片点击（可扩展为跳转到详情页）
+  // 处理菜品卡片点击
   const handleDishClick = (dish) => {
-    // 这里可以扩展为跳转到菜品详情页
     console.log("点击菜品:", dish);
     // navigate(`/dish/${dish.id}`);
   };
@@ -156,8 +155,12 @@ const Menu = () => {
         ))}
       </Tabs>
 
-      {/* 浮动购物车按钮 */}
-      <CartFloat count={cartQuantity} onClick={handleGoToCart} visible={true} />
+      {/* 浮动购物车按钮 - 仅在有商品时显示 */}
+      <CartFloat
+        count={cartQuantity}
+        onClick={handleGoToCart}
+        visible={cartQuantity > 0}
+      />
     </div>
   );
 };
