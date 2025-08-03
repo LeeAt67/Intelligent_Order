@@ -1,0 +1,79 @@
+/* 浮动购物车按钮容器 */
+.cartFloat {
+  position: fixed;
+  bottom: 120px; /* 移动端适配：约 3.2rem，按钮变小后可以稍微降低位置 */
+  right: 32px; /* 移动端适配：约 0.853rem */
+  z-index: 999;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* 购物车按钮样式 */
+.cartButton {
+  width: 80px; /* 移动端适配：约 2.133rem，减小尺寸 */
+  height: 80px; /* 移动端适配：约 2.133rem，减小尺寸 */
+  background-color: #ff6b35;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(255, 107, 53, 0.3);
+  transition: all 0.3s ease;
+}
+
+/* 悬停效果（移动端触摸时也会触发） */
+.cartButton:hover,
+.cartButton:active {
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
+}
+
+/* 购物车图标 */
+.cartIcon {
+  font-size: 40px; /* 移动端适配：约 1.067rem，减小图标尺寸 */
+  color: #fff;
+}
+
+/* Badge 样式覆盖 */
+.cartBadge :global(.rv-badge__wrapper) {
+  position: relative;
+}
+
+.cartBadge :global(.rv-badge) {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background-color: #ff3030 !important;    /* !important 优先级最高*/
+  color: #fff !important; 
+  border: 2px solid #fff !important;
+  font-size: 16px !important;
+  min-width: 28px !important;
+  height: 28px !important;
+  line-height: 24px !important;
+  border-radius: 14px !important;
+  font-weight: 600 !important;
+  z-index: 1001;
+}
+
+
+/* 关键帧动画 */
+@keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+/* 当购物车有商品时的动画效果 */
+.cartFloat:has(.cartBadge :global(.rv-badge)) .cartButton {
+  animation: bounce 0.6s ease;
+}
