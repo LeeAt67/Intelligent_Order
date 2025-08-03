@@ -1,0 +1,36 @@
+
+.categorySection {
+  margin: 48px 32px 0;
+  background-color: #fff;
+  border-radius: 16px;
+  padding: 32px;
+}
+
+.categoryGrid {
+  gap: 32px;
+  justify-content: center;
+}
+
+.categoryItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  cursor: pointer;
+}
+
+.categoryIcon {
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff2e8;
+  border-radius: 50%;
+  font-size: 48px;
+}
+
+.categoryName {
+  font-size: 24px;
+  color: #333;
+}
