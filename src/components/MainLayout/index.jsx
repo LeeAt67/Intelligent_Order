@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Tabbar } from "react-vant";
-import { HomeO, AppsO,BillO, UserO } from "@react-vant/icons";
+import { HomeO, AppsO, BillO, UserO } from "@react-vant/icons";
 import { Outlet, useNavigate, useLocation } from "react-router-dom";
 import styles from "./index.module.css";
 
@@ -45,7 +45,7 @@ const tabs = [
     title: "",
     path: "/ai",
   },
-  { icon: <BillO />, title: "订单", path: "/orders" },
+  { icon: <BillO />, title: "购物车", path: "/cart" },
   { icon: <UserO />, title: "我的", path: "/profile" },
 ];
 
@@ -64,8 +64,9 @@ const MainLayout = () => {
     setActive(index);
   }, []);
   return (
-    <div className={styles.layout}>
-      <div className={styles.content}>
+    <div className="flex flex-col h-screen" style={{ paddingBottom: "50px" }}>
+      <div className="flex-1">
+        {" "}
         <Outlet />
       </div>
       {/* tabbar */}
@@ -75,8 +76,6 @@ const MainLayout = () => {
           setActive(key);
           navigate(tabs[key].path);
         }}
-        className={styles.tabbar}
-        fixed
       >
         {tabs.map((tab, index) => (
           <Tabbar.Item key={index} icon={tab.icon}>

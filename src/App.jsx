@@ -9,9 +9,7 @@ import Toast from "@/components/Toast";
 // 懒加载页面组件
 const Home = lazy(() => import("@/pages/Home"));
 const Menu = lazy(() => import("@/pages/Menu"));
-const Orders = lazy(() => import("@/pages/Orders"));
 const Profile = lazy(() => import("@/pages/Profile"));
-const Detail = lazy(() => import("@/pages/Detail"));
 const AI = lazy(() => import("@/pages/AI"));
 const Cart = lazy(() => import("@/pages/Cart"));
 
@@ -22,19 +20,17 @@ function App() {
         <Routes>
           {/* 带有tabbar的主要页面 */}
           <Route element={<MainLayout />}>
+            <Route path="*" element={<Navigate to="/home" />} />
             <Route path="/" element={<Navigate to="/home" />} />
             <Route path="/home" element={<Home />} />
             <Route path="/menu" element={<Menu />} />
             <Route path="/ai" element={<AI />} />
-            <Route path="/orders" element={<Orders />} />
+            <Route path="/cart" element={<Cart />} />
             <Route path="/profile" element={<Profile />} />
           </Route>
 
           {/* 无tabbar的页面 */}
-          <Route element={<BlankLayout />}>
-            <Route path="/detail/:id" element={<Detail />} />
-            <Route path="/cart" element={<Cart />} />
-          </Route>
+          <Route element={<BlankLayout />}></Route>
         </Routes>
       </Suspense>
       <Toast />
