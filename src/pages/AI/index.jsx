@@ -42,12 +42,7 @@ const AI = () => {
 
     try {
       // 调用AI接口
-      const response = await chat([
-        {
-          role: "user",
-          content: inputValue,
-        },
-      ]);
+      const response = await chat(inputValue);
       // console.log(response);
 
       if (response.code === 0 && response.data) {
@@ -80,6 +75,12 @@ const AI = () => {
       setMessages((prev) => [...prev, errorResponse]);
     } finally {
       setIsLoading(false);
+    }
+  };
+
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter") {
+      handleSendMessage();
     }
   };
 
@@ -120,6 +121,7 @@ const AI = () => {
           onChange={setInputValue}
           placeholder="请输入您的需求..."
           className={styles.input}
+          onKeyPress={handleKeyPress}
         />
         <Button
           type="primary"
