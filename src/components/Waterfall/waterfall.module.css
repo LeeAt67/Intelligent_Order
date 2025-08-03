@@ -1,0 +1,29 @@
+/* 瀑布流容器 - 双列弹性布局 */
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px; /* 移动端适配：使用 rem 单位更佳 (0.427rem) */
+  flex-wrap: nowrap; /* 禁止换行，保持双列布局 */
+  position: relative; /* 为 loader 定位提供参考 */
+}
+
+/* 瀑布流列 - 每列占据接近一半宽度 */
+.column {
+  width: 48%; /* 预留 4% 作为列间距 */
+  margin: 0 1%; /* 左右边距各 1% */
+  display: flex;
+  flex-direction: column; /* 垂直排列图片卡片 */
+}
+
+/* 加载器 - 用于触发无限滚动 */
+.loader {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 80px; /* 移动端适配：约 2.133rem */
+  text-align: center;
+  font-size: 28px; /* 移动端适配：约 0.747rem */
+  color: #888;
+  padding: 20px; /* 移动端适配：约 0.533rem */
+}

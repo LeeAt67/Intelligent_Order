@@ -1,5 +1,14 @@
 import Mock from "mockjs";
 
+const getImages = (page, pageSize = 10) => {
+  return Array.from({ length: pageSize }, (_, i) => ({
+    // 唯一的索引
+    id: `${page}-${i}`,
+    height: Mock.Random.integer(100, 300),
+    url: Mock.Random.image("300x200", Mock.Random.color(), "#fff", "img"),
+  }));
+};
+
 export default [
   {
     url: "/api/banners",
@@ -32,6 +41,18 @@ export default [
         code: 0,
         data: randomData,
         msg: "success",
+      };
+    },
+  },
+  {
+    url: "/api/images",
+    method: "get",
+    timeout: 1000,
+    response: ({ query }) => {
+      const page = Number(query.page) || 1;
+      return {
+        code: 0,
+        data: getImages(page),
       };
     },
   },

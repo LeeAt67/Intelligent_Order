@@ -7,3 +7,7 @@ import axios from "./config";
 export const getBanners = () => {
   return axios.get("/banners");
 };
+
+export const getImages = (page) => {
+  return axios.get("/images", { params: { page } });
+};
