@@ -1,0 +1,92 @@
+/* 菜品卡片容器 */
+.dishCard {
+  border-radius: 16px; /* 移动端友好的圆角设计 */
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.dishCard:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+/* 菜品内容区域 */
+.dishContent {
+  display: flex;
+  padding: 24px; /* 移动端适配：约 0.64rem */
+  gap: 24px; /* 移动端适配：约 0.64rem */
+}
+
+/* 图片容器 */
+.imageContainer {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.dishImage {
+  width: 200px; /* 移动端适配：约 5.33rem */
+  height: 150px; /* 移动端适配：约 4rem */
+  border-radius: 12px; /* 移动端适配：约 0.32rem */
+  object-fit: cover; /* 保持图片比例，避免变形 */
+}
+
+/* 菜品信息区域 */
+.dishInfo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.dishName {
+  font-size: 32px; /* 移动端适配：约 0.853rem */
+  font-weight: 600;
+  color: #333;
+  margin: 0 0 8px 0;
+  line-height: 1.3;
+}
+
+/* 菜品描述 */
+.dishDesc {
+  font-size: 24px; /* 移动端适配：约 0.64rem */
+  color: #666;
+  line-height: 1.4;
+  margin: 0 0 16px 0;
+  flex: 1;
+}
+
+/* 底部价格和按钮区域 */
+.dishFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+}
+
+.dishPrice {
+  font-size: 32px; /* 移动端适配：约 0.853rem */
+  font-weight: 600;
+  color: #ff6b35;
+}
+
+/* 添加按钮 */
+.addButton {
+  width: 60px; /* 移动端适配：约 1.6rem */
+  height: 60px; /* 移动端适配：约 1.6rem */
+  border-radius: 50%;
+  background-color: #ff6b35;
+  border: none;
+  font-size: 36px; /* 移动端适配：约 0.96rem */
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.addButton:hover {
+  background-color: #e55a2b;
+  transform: scale(1.1);
+}
