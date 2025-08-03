@@ -1,0 +1,29 @@
+/* 菜单头部容器 */
+.container {
+  background-color: #fff;
+  border-bottom: 1px solid #eee;
+}
+
+/* 自定义头部样式（无返回按钮时使用） */
+.header {
+  padding: 32px; /* 移动端适配：约 0.853rem */
+  text-align: center;
+}
+
+.title {
+  font-size: 36px; /* 移动端适配：约 0.96rem */
+  font-weight: 600;
+  color: #333;
+  margin: 0;
+}
+
+/* NavBar 样式覆盖 */
+.navbar {
+  background-color: #fff;
+}
+
+.navbar :global(.rv-nav-bar__title) {
+  font-size: 36px; /* 移动端适配：约 0.96rem */
+  font-weight: 600;
+  color: #333;
+}
