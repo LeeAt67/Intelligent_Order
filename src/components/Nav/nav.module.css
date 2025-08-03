@@ -1,0 +1,39 @@
+.nav {
+  display: flex;
+  align-items: center;
+  padding: 32px;
+  background-color: #fff;
+  gap: 24px;
+}
+
+.searchBar {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  padding: 16px 24px;
+  background-color: #f5f5f5;
+  border-radius: 50px;
+  gap: 16px;
+}
+
+.searchIcon {
+  color: #999;
+  font-size: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.searchText {
+  color: #999;
+  font-size: 28px;
+}
+
+.aiButton {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
