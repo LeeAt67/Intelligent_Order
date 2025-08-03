@@ -18,6 +18,7 @@
   - useCallback useMemo ...
 - LLM
   - AI 生成动漫头像
+  - Chat 智能饮食聊天助手
 
 ## 项目架构
 
@@ -28,6 +29,7 @@
 - api
 - mock
 - utils
+- llm
 
 ## 开发前的准备
 
@@ -94,8 +96,12 @@
     样式复用的更好，以后几乎可以不用写样式
 - 智能前端
   - 文生图，用用户名与个性签名来生成对应的头像
+  - chat 函数
+    接入 deepseek api 来接收用户的问题并智能解答，并备用更快更灵活的 KIMI chat
 
 ## 项目难点
+
+- 智能饮食助手的输出直接一下子全出来了，没有实现**流式输出**
 
 ## 功能模块
 
@@ -109,11 +115,27 @@
   - tabbar
     - react-vant + @react-vant/icons
     - value + onChange 响应式
+- toast 组件封装
+  - 需要自定义，UI 组件库不满足需求
+  - UI props
+  - JS 显示出来 跨层级通信
+    观察者
+  - mitt eventBus 事件总线
+    - 实例化 mitt()
+    - on(自定义事件的名字。callback)
+    - emit（自定义事件的名字，参数）
+      组件通过监听一个自定义事件,实现基于事件的组件通信
+- chatbot 模块
+  - llm 模块 chat 封装
+  - 迭代 chat ， 支持任意模型
 
 ## 项目遇到过什么问题，怎么解决的
 
 - 使用豆包文生头像图大模型时遇见 CORS 跨域限制
   使用 Vite 代理配置
+- 在 chat messages 中 遇到 message 覆盖问题
+  - 闭包陷阱问题
+    一次事件里面，两次 setMessages()
 
 ## 通用组件开发
 
