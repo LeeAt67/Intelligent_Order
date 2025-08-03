@@ -31,6 +31,7 @@ export const chat = async (
       }),
     });
     const data = await response.json();
+    // console.log(data);
     return {
       code: 0,
       data: {
@@ -40,8 +41,9 @@ export const chat = async (
     };
   } catch (err) {
     return {
-      code: 0,
+      code: 1,
       msg: "出错了...",
+      data: null,
     };
   }
 };
