@@ -36,13 +36,32 @@ const AI = () => {
       content: inputValue,
     };
 
+    // 文本记忆
+    const conversationHistory = [
+      {
+        role: "system",
+        content:
+          "你是一个专业的餐厅点餐助手小食，你的任务是帮助用户点餐和解答餐厅相关问题。请用友好、专业的语气回答用户的问题，重点关注菜品推荐、营养搭配、价格咨询等方面。回答要简洁明了，适合移动端显示。",
+      },
+      // 添加历史对话记录（最近10条）
+      ...messages.slice(-10).map((msg) => ({
+        role: msg.type === "user" ? "user" : "assistant",
+        content: msg.content,
+      })),
+      // 添加当前用户消息
+      {
+        role: "user",
+        content: inputValue,
+      },
+    ];
+
     setMessages((prev) => [...prev, userMessage]);
     setInputValue("");
     setIsLoading(true);
 
     try {
       // 调用AI接口
-      const response = await chat(inputValue);
+      const response = await chat(conversationHistory);
       // console.log(response);
 
       if (response.code === 0 && response.data) {
