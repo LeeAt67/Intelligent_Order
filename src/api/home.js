@@ -5,9 +5,9 @@ import axios from "./config";
  * @returns {Promise} banner列表
  */
 export const getBanners = () => {
-  return axios.get("/api/banners");
+  return axios.get("/banners");
 };
 
 export const getImages = (page) => {
-  return axios.get("/api/images", { params: { page } });
+  return axios.get("/images", { params: { page } });
 };

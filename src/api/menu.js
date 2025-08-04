@@ -12,7 +12,7 @@ import axios from "./config";
  * @returns {Promise} 分类数据
  */
 export const getCategories = () => {
-  return axios.get("/api/menu/categories");
+  return axios.get("/menu/categories");
 };
 
 /**
@@ -24,7 +24,7 @@ export const getCategories = () => {
  */
 export const getDishes = (categoryId) => {
   const params = categoryId ? { categoryId } : {};
-  return axios.get("/api/menu/dishes", { params });
+  return axios.get("/menu/dishes", { params });
 };
 
 /**
