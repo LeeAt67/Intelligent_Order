@@ -6,7 +6,7 @@
  */
 
 import jwt from "jsonwebtoken";
-import { showToast } from "vant";
+import { showToast } from "../src/utils/eventBus";
 const { sign } = jwt;
 
 // JWT 密钥配置 (实际项目中应该使用环境变量进行配置)

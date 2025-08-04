@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { Tabbar } from "react-vant";
 import { HomeO, AppsO, BillO, UserO } from "@react-vant/icons";
 import { Outlet, useNavigate, useLocation } from "react-router-dom";
-import styles from "./index.module.css";
 
 // 菜单栏配置
 const tabs = [
