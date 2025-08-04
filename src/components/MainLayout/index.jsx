@@ -62,7 +62,7 @@ const MainLayout = () => {
       location.pathname.startsWith(tab.path)
     );
     setActive(index);
-  }, []);
+  }, [location.pathname]);
   return (
     <div className="flex flex-col h-screen" style={{ paddingBottom: "50px" }}>
       <div className="flex-1">
