@@ -1,4 +1,5 @@
 import { useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import { Image, Cell, Button, ActionSheet } from "react-vant";
 import {
   SettingO,
@@ -12,9 +13,16 @@ import useTitle from "@/hooks/useTitle";
 import styles from "./index.module.css";
 import { generateAvatarImage } from "@/llm";
 import { showToast } from "@/utils/eventBus";
+import { useUserStore } from "@/store/useUserStore";
 
 const Profile = () => {
   useTitle("我的");
+
+  // 路由导航
+  const navigate = useNavigate();
+
+  // 用户状态管理
+  const logout = useUserStore((state) => state.logout);
 
   // 文件上传引用
   const fileInputRef = useRef(null);
@@ -88,7 +96,7 @@ const Profile = () => {
         个性签名: ${userInfo.slogan}`;
         const result = await generateAvatarImage(text);
 
-       //  console.log(result); 
+        //  console.log(result);
 
         if (result.code === 0 && result.data?.imageUrl) {
           setUserInfo({ ...userInfo, avatar: result.data.imageUrl });
@@ -110,7 +118,14 @@ const Profile = () => {
   };
 
   const handleLogout = () => {
-    console.log("退出登录");
+    // 调用 Zustand store 的 logout 方法清除用户状态
+    logout();
+
+    // 显示退出成功提示
+    showToast("退出成功", "success");
+
+    // 导航到登录页面
+    navigate("/login", { replace: true });
   };
 
   return (
