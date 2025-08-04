@@ -1,5 +1,6 @@
 import styles from "./banner.module.css";
-import { Swiper, Loading } from "react-vant";
+import React from "react";
+import { Swiper, Skeleton } from "react-vant";
 import { useState, useRef, useEffect } from "react";
 import { getBanners } from "@/api/home";
 
@@ -26,10 +27,7 @@ const Banner = () => {
   return (
     <div className={styles.banner}>
       {bannersLoading ? (
-        <div className={styles.bannerLoading}>
-          <Loading size="24px" />
-          <span className={styles.loadingText}>加载中...</span>
-        </div>
+        <Skeleton title />
       ) : bannerRef.current && bannerRef.current.length > 0 ? (
         <Swiper autoplay={3000} className={styles.swiper}>
           {bannerRef.current.map((banner, index) => (

@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import { Skeleton } from "react-vant";
 import ImageCard from "@/components/ImageCard";
 import styles from "./waterfall.module.css";
 
@@ -57,7 +58,7 @@ const Waterfall = (props) => {
 
         {/* 加载器：触发无限滚动的检测元素 */}
         <div ref={loader} className={styles.loader}>
-          {loading && "Loading..."}
+          {loading && <Skeleton rowHeight={20} />}
         </div>
       </div>
     </div>

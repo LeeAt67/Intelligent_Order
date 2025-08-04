@@ -12,6 +12,7 @@
   - React-Router-DOM
     - 懒加载
     - SPA
+    - 路由守卫
   - Zustand
 
 - Mock 接口模拟
@@ -25,6 +26,8 @@
 - LLM
   - AI 生成动漫头像
   - Chat 智能饮食聊天助手
+- 移动端适配
+  - rem
 
 ## 项目架构
 
@@ -45,6 +48,7 @@
   mitt 发布/订阅模式
   开发期间的依赖
   vite-plugin-mock jwt
+  jsonwebtoken
 
 - vite 配置
   - alias
@@ -94,12 +98,14 @@
     px -> rem
 
 - 原子 css
+
   - App.css 里面添加了通用样式
   - 各自模块里面的 module.css 不会影响别的组件而起冲突
   - 原子类的 css
     一个元素按功能逻辑拆分成多个类，和原子一样
     元素的样式就可以由这些原子类组合而成
     样式复用的更好，以后几乎可以不用写样式
+
 - 智能前端
 
   - 文生图，用用户名与个性签名来生成对应的头像
@@ -108,20 +114,27 @@
     - 上下文本记忆功能，用数组来保留适量（减少 token 的消耗）的上下文文本给予大模型参考
   - 流式输出
 
-- 升级瀑布流
-
 - 自定义 hooks
 
   - useTitle
 
 - es6 特性使用
   tabbar 的高亮
+
   - arr.findIndex
   - str.startsWith
   - promise
     瀑布流随机数据生成
   - Array.from({length:pageSize},(\_,i)=>({
     }))
+  - [filed]:value 计算属性名
+
+- 用户体验优化
+  - 组件粒度划分
+    React.memo + useCallback
+  - 懒加载
+  - SPA
+  - 骨架屏，不然用户等待
 
 ## 功能模块
 
@@ -146,6 +159,7 @@
     - emit（自定义事件的名字，参数）
       组件通过监听一个自定义事件,实现基于事件的组件通信
 - chatbot 模块
+
   - llm 模块 chat 封装
   - 迭代 chat ， 支持任意模型
 
@@ -157,7 +171,7 @@
     /api/images?page=${n} 支持翻页
     唯一 id page + index
     随即图片，高度随机
-  - images 怎么放到两列中？ 使用MVVM
+  - images 怎么放到两列中？ 使用 MVVM
     数据驱动界面（2 列） 奇偶
   - 加载更多 位于盒子底部的元素 通过使用 intersectionObserver
     观察了是否出现在视窗，性能更好，使用了观察者模式
@@ -174,6 +188,7 @@
     一次事件里面，两次 setMessages()
 - 升级的瀑布流
 
+  - 骨架屏
   - 奇偶 images 因为两列分配可能有时候不好看
     使用两个响应式数组，判断哪一列高度更少，将新得到的 img 加入那个数组
   - intersectionObserver 用的两次，重复了，dry 原则 封装

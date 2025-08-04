@@ -1,5 +1,5 @@
 import DishCard from "@/components/DishCard";
-import { Empty } from "react-vant";
+import { Empty, Skeleton } from "react-vant";
 import styles from "./index.module.css";
 
 /**
@@ -24,11 +24,7 @@ const DishList = ({
 }) => {
   // 加载状态
   if (loading) {
-    return (
-      <div className={styles.loading}>
-        <div className={styles.loadingText}>加载中...</div>
-      </div>
-    );
+    return <Skeleton title />;
   }
 
   // 空状态
