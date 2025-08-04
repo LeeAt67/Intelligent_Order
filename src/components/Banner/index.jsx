@@ -30,10 +30,10 @@ const Banner = () => {
           <Loading size="24px" />
           <span className={styles.loadingText}>加载中...</span>
         </div>
-      ) : (
+      ) : bannerRef.current && bannerRef.current.length > 0 ? (
         <Swiper autoplay={3000} className={styles.swiper}>
           {bannerRef.current.map((banner, index) => (
-            <Swiper.Item key={banner.alt}>
+            <Swiper.Item key={banner.alt || index}>
               <img
                 src={banner.url}
                 alt={banner.alt}
@@ -42,6 +42,8 @@ const Banner = () => {
             </Swiper.Item>
           ))}
         </Swiper>
+      ) : (
+        <div className={styles.bannerPlaceholder}>暂无轮播图</div>
       )}
     </div>
   );
